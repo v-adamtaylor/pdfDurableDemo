@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace actDurableIsolated
 {
-    public class Function1
+    public class TestFunction
     {
         private readonly ILogger _logger;
 
@@ -14,7 +14,7 @@ namespace actDurableIsolated
             _logger = loggerFactory.CreateLogger<Function1>();
         }
 
-        [Function("Function1")]
+        [Function("TestFunction")]
         public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
