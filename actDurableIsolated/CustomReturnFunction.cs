@@ -9,9 +9,9 @@ using System.Text;
 
 namespace actDurableIsolated
 {
-    public static class Function
+    public static class CustomReturnFunction
     {
-        [Function(nameof(Function))]
+        [Function(nameof(CustomReturnFunction))]
         public static async Task<HttpResponseMessage> RunOrchestrator(
             [OrchestrationTrigger] TaskOrchestrationContext context, ILogger log)
         {
@@ -84,7 +84,7 @@ namespace actDurableIsolated
 
             // Function input comes from the request content.
             string instanceId = await client.ScheduleNewOrchestrationInstanceAsync(
-                nameof(Function));
+                nameof(CustomReturnFunction));
 
             logger.LogInformation("Started orchestration with ID = '{instanceId}'.", instanceId);
 
