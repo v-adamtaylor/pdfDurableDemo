@@ -22,10 +22,10 @@ namespace actDurableIsolated
                 DateTime dueTime = context.CurrentUtcDateTime.AddSeconds(10);
                 await context.CreateTimer(dueTime, CancellationToken.None);
 
-                // Replace "hello" with the name of your Durable Activity Function.
-                outputs.Add(await context.CallActivityAsync<string>("Function1_Hello", "Tokyo"));
-                outputs.Add(await context.CallActivityAsync<string>("Function1_Hello", "Seattle"));
-                outputs.Add(await context.CallActivityAsync<string>("Function1_Hello", "London"));
+                // Rename the Durable Activity Function from 'SayHello' to an undefined Function to test error and custom message and status.
+                outputs.Add(await context.CallActivityAsync<string>("SayHello", "Tokyo"));
+                outputs.Add(await context.CallActivityAsync<string>("SayHello", "Seattle"));
+                outputs.Add(await context.CallActivityAsync<string>("SayHello", "London"));
 
 
                 // Setting custom status to "Completed"
